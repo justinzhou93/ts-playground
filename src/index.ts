@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import _ from 'lodash';
 
+const TOKEN_DECIMALS = 10;
+
 function convertJSON() {
   // READ FROM FILE
   const rawAllocData: string = fs.readFileSync('./files/alloc.json', {encoding:'utf8', flag:'r'});
@@ -10,10 +12,10 @@ function convertJSON() {
   const parsedAllocData: [string, number][] = JSON.parse(rawAllocData);
   const parsedVestingData: [string, [string, number][]][] = JSON.parse(rawVestingData);
   const convertedAllocData = _.map(parsedAllocData, allocation => {
-    return [allocation[0], (allocation[1] * (10**10))]
+    return [allocation[0], (allocation[1] * (10**TOKEN_DECIMALS))]
   })
   const convertedVestingData: [string, [string, number][]][] = _.map(parsedVestingData, vest => {
-    const newVestSchedule: [string, number][] = _.map(vest[1], schedule => [schedule[0], (schedule[1] * (10**10))])
+    const newVestSchedule: [string, number][] = _.map(vest[1], schedule => [schedule[0], (schedule[1] * (10**TOKEN_DECIMALS))])
     const convertedVest: [string, [string, number][]] = [vest[0], newVestSchedule]
     return convertedVest
   })
