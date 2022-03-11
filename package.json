@@ -1,0 +1,35 @@
+{
+  "name": "dot_indexer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "prepack": "rm -rf dist && npm build",
+    "test": "jest",
+    "codegen": "./node_modules/.bin/subql codegen"
+  },
+  "homepage": "https://github.com/subquery/subql-starter",
+  "repository": "github:subquery/subql-starter",
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "author": "Hao",
+  "license": "MIT",
+  "devDependencies": {
+    "@polkadot/api": "^6",
+    "@polkadot/extension-dapp": "^0.42.7",
+    "@polkadot/keyring": "^8.4.1",
+    "@polkadot/util-crypto": "^8.4.1",
+    "@polkadot/wasm-crypto": "^4.5.1",
+    "@types/lodash": "^4.14.179",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.0.0",
+    "lodash": "^4.17.21",
+    "typescript": "^4.5.4"
+  }
+}
